@@ -1,18 +1,22 @@
-import { Entity, PrimaryGeneratedColumn, Column } from "typeorm"
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from "typeorm"
+import { Chat } from "./Chat";
 
-@Entity()
+@Entity({ name: "users" })
 export class User {
 
-    @PrimaryGeneratedColumn()
-    id: number
+    @PrimaryGeneratedColumn("uuid")
+    id: string
 
-    @Column()
+    @Column({ type: "varchar", length: 10 })
     firstName: string
 
-    @Column()
+    @Column({ nullable: false })
     lastName: string
 
     @Column()
     age: number
+
+    @OneToMany(() => Chat, (chat) => chat.user)
+    chats: Promise<Chat[]>;
 
 }

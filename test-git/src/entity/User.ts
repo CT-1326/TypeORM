@@ -5,16 +5,16 @@ import { Chat } from "./Chat";
 export class User {
 
     @PrimaryGeneratedColumn("uuid")
-    id: string
+    id: string;
 
     @Column({ type: "varchar", length: 10 })
-    firstName: string
+    firstName: string;
 
     @Column({ nullable: false })
-    lastName: string
+    lastName: string;
 
     @Column()
-    age: number
+    age: number;
 
     @OneToMany(() => Chat, (chat) => chat.user)
     chats: Promise<Chat[]>;

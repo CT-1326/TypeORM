@@ -5,10 +5,10 @@ import { User } from "./User";
 export class Chat {
 
     @PrimaryGeneratedColumn("uuid")
-    id: string
+    id: string;
 
     @Column({ type: "varchar", length: 100 })
-    content: string
+    content: string;
 
     @ManyToOne(() => User, (user) => user.chats)
     user: Promise<Chat[]>;
